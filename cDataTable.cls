@@ -735,127 +735,15 @@ For Each varRec In Records
     If colSorting.Count = 0 Then
         colSorting.Add recRec, varRec
     Else
-        lngPrevious = 0
-        lngCurrent = 0
+        
         lngStartCountDown = colSorting.Count
         lngStartCountDownPrevious = colSorting.Count
-        
-        If colSorting.Count > 2000 Then
-            
-            For lngCounter = lngStartCountDown To 1 Step -1000
-                lngCounterStore = lngCounter
-                Set varRec = colSorting(lngCounter)
-                Set recCol = varRec
-                If recRec.GreaterOrSmallerThan(recCol, recSort) = -1 Then
-                    'Debug.Print ("Smaller " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                    lngPrevious = lngCurrent
-                    lngCurrent = -1
-                ElseIf recRec.GreaterOrSmallerThan(recCol, recSort) = 1 Then
-                    'Debug.Print ("Larger " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                    lngPrevious = lngCurrent
-                    lngCurrent = 1
-                Else
-                     'Debug.Print ("Equal " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                    lngPrevious = lngCurrent
-                    lngCurrent = 0
-                End If
-                lngStartCountDown = lngCounter
-                If lngPrevious = 1 And lngCurrent <= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                If lngPrevious = 0 And lngCurrent = 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                If lngPrevious = -1 And lngCurrent >= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                If lngPrevious = 0 And lngCurrent >= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                lngStartCountDownPrevious = lngStartCountDown
-            Next lngCounter
-        Else
-            lngStartCountDown = colSorting.Count
-        End If
-        lngPrevious = 0
-        lngCurrent = 0
-        If colSorting.Count > 200 Then
-            
-            For lngCounter = lngStartCountDown To 1 Step -100
-                lngCounterStore = lngCounter
-                Set varRec = colSorting(lngCounter)
-                Set recCol = varRec
-                If recRec.GreaterOrSmallerThan(recCol, recSort) = -1 Then
-                    'Debug.Print ("Smaller " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                    lngPrevious = lngCurrent
-                    lngCurrent = -1
-                ElseIf recRec.GreaterOrSmallerThan(recCol, recSort) = 1 Then
-                    'Debug.Print ("Larger " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                    lngPrevious = lngCurrent
-                    lngCurrent = 1
-                Else
-                     'Debug.Print ("Equal " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                    lngPrevious = lngCurrent
-                    lngCurrent = 0
-                End If
-                lngStartCountDown = lngCounter
-                If lngPrevious = 1 And lngCurrent <= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                If lngPrevious = 0 And lngCurrent = 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                If lngPrevious = -1 And lngCurrent >= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                If lngPrevious = 0 And lngCurrent >= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                lngStartCountDownPrevious = lngStartCountDown
-            Next lngCounter
-        Else
-            lngStartCountDown = colSorting.Count
-        End If
-        lngPrevious = 0
-        lngCurrent = 0
-        If colSorting.Count > 20 Then
-            
-            For lngCounter = lngStartCountDown To 1 Step -10
-                lngCounterStore = lngCounter
-                Set varRec = colSorting(lngCounter)
-                Set recCol = varRec
-                If recRec.GreaterOrSmallerThan(recCol, recSort) = -1 Then
-                    'Debug.Print ("Smaller " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                    lngPrevious = lngCurrent
-                    lngCurrent = -1
-                ElseIf recRec.GreaterOrSmallerThan(recCol, recSort) = 1 Then
-                    'Debug.Print ("Larger " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                    lngPrevious = lngCurrent
-                    lngCurrent = 1
-                Else
-                     'Debug.Print ("Equal " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                    lngPrevious = lngCurrent
-                    lngCurrent = 0
-                End If
-                lngStartCountDown = lngCounter
-                If lngPrevious = 1 And lngCurrent <= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                If lngPrevious = 0 And lngCurrent = 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                If lngPrevious = -1 And lngCurrent >= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                If lngPrevious = 0 And lngCurrent >= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
-                lngStartCountDownPrevious = lngStartCountDown
-            Next lngCounter
-        Else
-            lngStartCountDown = colSorting.Count
-        End If
-        lngPrevious = 0
-        lngCurrent = 0
-        For lngCounter = lngStartCountDown To 1 Step -1
-            lngCounterStore = lngCounter
-            Set varRec = colSorting(lngCounter)
-            Set recCol = varRec
-            If recRec.GreaterOrSmallerThan(recCol, recSort) = -1 Then
-                'Debug.Print ("Smaller " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                lngPrevious = lngCurrent
-                lngCurrent = -1
-            ElseIf recRec.GreaterOrSmallerThan(recCol, recSort) = 1 Then
-                'Debug.Print ("Larger " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                lngPrevious = lngCurrent
-                lngCurrent = 1
-            Else
-                 'Debug.Print ("Equal " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
-                lngPrevious = lngCurrent
-                lngCurrent = 0
-            End If
-            If lngPrevious = 1 And lngCurrent <= 0 Then Exit For
-            If lngPrevious = 0 And lngCurrent = 0 Then Exit For
-            If lngPrevious = -1 And lngCurrent >= 0 Then Exit For
-            If lngPrevious = 0 And lngCurrent >= 0 Then Exit For
-        Next lngCounter
-'        colSorting.Add recRec, CStr(colSorting.Count + 1)
+        SortStep lngCurrent, lngPrevious, colSorting, lngCounterStore, recRec, recCol, recSort, lngStartCountDown, lngStartCountDownPrevious, 10000
+        SortStep lngCurrent, lngPrevious, colSorting, lngCounterStore, recRec, recCol, recSort, lngStartCountDown, lngStartCountDownPrevious, 1000
+        SortStep lngCurrent, lngPrevious, colSorting, lngCounterStore, recRec, recCol, recSort, lngStartCountDown, lngStartCountDownPrevious, 100
+        SortStep lngCurrent, lngPrevious, colSorting, lngCounterStore, recRec, recCol, recSort, lngStartCountDown, lngStartCountDownPrevious, 10
+        SortStep lngCurrent, lngPrevious, colSorting, lngCounterStore, recRec, recCol, recSort, lngStartCountDown, lngStartCountDownPrevious, 1
+
         If lngPrevious = 0 And lngCurrent = 0 Then
             colSorting.Add recRec, CStr(colSorting.Count + 1)
         ElseIf lngPrevious = 1 And lngCurrent <= 0 Then
@@ -876,6 +764,40 @@ For Each varRec In colSorting
     
 Next varRec
 Set Sort = datSorted
+End Function
+
+Private Function SortStep(ByRef lngCurrent As Long, ByRef lngPrevious As Long, ByRef colSorting As Collection, lngCounterStore As Long, ByRef recRec As cRecord, recCol As cRecord, recSort As cRecord, ByRef lngStartCountDown As Long, ByRef lngStartCountDownPrevious As Long, ByRef lngStep As Long)
+lngPrevious = 0
+lngCurrent = 0
+If colSorting.Count > lngStep * 2 Or lngStep = 1 Then
+    
+    For lngCounter = lngStartCountDown To 1 Step -lngStep
+        lngCounterStore = lngCounter
+        Set varRec = colSorting(lngCounter)
+        Set recCol = varRec
+        If recRec.GreaterOrSmallerThan(recCol, recSort) = -1 Then
+            'Debug.Print ("Smaller " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
+            lngPrevious = lngCurrent
+            lngCurrent = -1
+        ElseIf recRec.GreaterOrSmallerThan(recCol, recSort) = 1 Then
+            'Debug.Print ("Larger " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
+            lngPrevious = lngCurrent
+            lngCurrent = 1
+        Else
+             'Debug.Print ("Equal " & recRec.FieldValue("Column1") & ":" & recCol.FieldValue("Column1"))
+            lngPrevious = lngCurrent
+            lngCurrent = 0
+        End If
+        lngStartCountDown = lngCounter
+        If lngPrevious = 1 And lngCurrent <= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
+        If lngPrevious = 0 And lngCurrent = 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
+        If lngPrevious = -1 And lngCurrent >= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
+        If lngPrevious = 0 And lngCurrent >= 0 Then lngStartCountDown = lngStartCountDownPrevious: Exit For
+        lngStartCountDownPrevious = lngStartCountDown
+    Next lngCounter
+Else
+    lngStartCountDown = colSorting.Count
+End If
 End Function
 
 Public Function SelectFields(ParamArray fieldList() As Variant) As cDataTable
